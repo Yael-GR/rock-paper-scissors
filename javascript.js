@@ -57,30 +57,15 @@ function playRound(humanScore, computerScore){
     if (humanChoice === computerChoice) {
         winner = "tie";
     }
-    else if (humanChoice === "rock") {
-        if (computerChoice === "paper") {
-            winner = "lose";
+    else if (humanChoice === "rock" && computerChoice === "paper" ||
+    humanChoice === "paper" && computerChoice === "scissors" ||
+    humanChoice === "scissors" && computerChoice === "rock") {
+        winner = "lose";
         }
-        else {
-            winner = "win";
-        }
-    }
-    else if (humanChoice === "paper") {
-        if (computerChoice === "scissors") {
-            winner = "lose";
-        }
-        else {
-            winner = "win";
-        }
-    }
     else {
-        if (computerChoice === "rock") {
-            winner = "lose";
-        }
-        else {
-            winner = "win";
-        }
+        winner = "win";
     }
+    
     return winner;
 }
 
