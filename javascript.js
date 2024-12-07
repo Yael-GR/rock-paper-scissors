@@ -1,3 +1,5 @@
+console.log(playGame());
+
 function playGame() {
     let humanScore = 0;
     let computerScore = 0;
@@ -13,13 +15,13 @@ function playGame() {
         notifyRoundWinner(winner, humanScore, computerScore);
     }
     if (humanScore === computerScore) {
-        console.log(`It's a tie! you have both scored ${humanScore} points.`)
+        alert(`It's a tie! you have both scored ${humanScore} points.`)
     }
     else if (humanScore > computerScore) {
-        console.log(`Congrats! you have won the game with ${humanScore}.`)
+        alert(`Congrats! you have won the game! The final score is ${humanScore}:${computerScore}.`)
     }
     else {
-        console.log(`Oh no, you have lost the game with ${humanScore}!`)
+        alert(`Oh no, you have lost the game! The final score is ${humanScore}:${computerScore}.`)
     }
 }
 
@@ -84,14 +86,12 @@ function playRound(humanScore, computerScore){
 
 function notifyRoundWinner (winner, humanScore, computerScore) {
     if (winner === "tie") {
-        console.log(`This round is a tie. The current score is ${humanScore}:${computerScore}.`)
+        alert(`This round is a tie. The current score is ${humanScore}:${computerScore}.`)
     }
     else if (winner === "lose") {
-        console.log(`You have lost this round. The current score is ${humanScore}:${computerScore}.`)
+        alert(`You have lost this round. The current score is ${humanScore}:${computerScore}.`)
     }
     else {
-        console.log(`You have won this round! The current score is ${humanScore}:${computerScore}.`)
+        alert(`You have won this round! The current score is ${humanScore}:${computerScore}.`)
     }
 }
-
-console.log(playGame());
