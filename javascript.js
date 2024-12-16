@@ -14,18 +14,21 @@ function playGame() {
     });
 
     function playRound(humanChoice){
-        let computerChoice = getComputerChoice();
+        const computerChoice = getComputerChoice();
         console.log(`computer choice: ${computerChoice}`);
+        const currentRoundBoard = document.querySelector("#currentRound");
 
         if (humanChoice === computerChoice) {
-            //if they choose the same thing, don't do anything.
+            currentRoundBoard.textContent = "This round was a tie!"
         }
         else if (humanChoice === "rock" && computerChoice === "paper" ||
         humanChoice === "paper" && computerChoice === "scissors" ||
-        humanChoice === "scissors" && computerChoice === "rock") { //computer wins
+        humanChoice === "scissors" && computerChoice === "rock") { //player loses
+            currentRoundBoard.textContent = "You lost this round"
             computerScore++;
         }
         else { //player wins
+            currentRoundBoard.textContent = "You won this round!"
             humanScore++;
         }
         console.log(`human score: ${humanScore}`);
@@ -35,6 +38,8 @@ function playGame() {
         console.log(`round number: ${round}`);
 
         publishResults(humanScore, computerScore, humanChoice, computerChoice, round)
+
+        if (round === 5) {displayWinner(humanScore, computerScore)}
     }  
 }
 
@@ -63,4 +68,16 @@ function publishResults (humanScore, computerScore, humanChoice, computerChoice,
     humanChoiceBoard.textContent = `Your choice is: ${humanChoice}`;
     computerChoiceBoard.textContent = `Computer choice is: ${computerChoice}`;
     roundBoard.textContent = `You have played ${round} rounds`;
+}
+
+function displayWinner (humanScore, computerScore) {
+    if (humanScore === computerScore) {
+        alert(`You have tied! Both you and the computer have won ${humanScore} rounds.`)
+    }
+    else if (humanScore > computerScore) {
+        alert(`You have won! You won ${humanScore} rounds, well the computer won ${computerScore}!`);
+    }
+    else {
+        alert(`You have lost! You won ${humanScore} rounds, well the computer won ${computerScore}.`)
+    }
 }
