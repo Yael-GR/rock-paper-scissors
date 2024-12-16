@@ -10,7 +10,7 @@ function playGame() {
         const humanChoice = event.target.id
         console.log(`human choice: ${humanChoice}`);
 
-        if (round < 5) {playRound(humanChoice);}
+        if (round < 5 && humanChoice !== "selection") {playRound(humanChoice);}
     });
 
     function playRound(humanChoice){
@@ -34,7 +34,7 @@ function playGame() {
         round++;
         console.log(`round number: ${round}`);
 
-        if (round === 5) {notifyGameWinner(humanScore, computerScore);}
+        publishResults(humanScore, computerScore, humanChoice, computerChoice, round)
     }  
 }
 
@@ -49,4 +49,18 @@ function getComputerChoice() {
     else {
         return "scissors";
     }
+}
+
+function publishResults (humanScore, computerScore, humanChoice, computerChoice, round) {
+    const humanScoreBoard = document.querySelector("#humanScore");
+    const computerScoreBoard = document.querySelector("#computerScore");
+    const roundBoard = document.querySelector("#round");
+    const humanChoiceBoard = document.querySelector("#humanChoice");
+    const computerChoiceBoard = document.querySelector("#computerChoice");
+
+    humanScoreBoard.textContent = `Your score is: ${humanScore}`;
+    computerScoreBoard.textContent = `Computer score is: ${computerScore}`;
+    humanChoiceBoard.textContent = `Your choice is: ${humanChoice}`;
+    computerChoiceBoard.textContent = `Computer choice is: ${computerChoice}`;
+    roundBoard.textContent = `You have played ${round} rounds`;
 }
